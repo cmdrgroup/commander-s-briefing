@@ -491,7 +491,8 @@ const ChargeListManager = ({ operatorId, operatorName, onClose }: ChargeListMana
                 </div>
               );
             })}
-          </div>
+        </div>
+        </>)}
         </div>
       </div>
     </div>
