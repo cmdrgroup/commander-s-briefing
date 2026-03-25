@@ -88,6 +88,8 @@ export type Database = {
           step_7_completed_at: string | null
           step_8_completed: boolean
           step_8_completed_at: string | null
+          step_9_completed: boolean
+          step_9_completed_at: string | null
           updated_at: string
         }
         Insert: {
@@ -119,6 +121,8 @@ export type Database = {
           step_7_completed_at?: string | null
           step_8_completed?: boolean
           step_8_completed_at?: string | null
+          step_9_completed?: boolean
+          step_9_completed_at?: string | null
           updated_at?: string
         }
         Update: {
@@ -150,6 +154,8 @@ export type Database = {
           step_7_completed_at?: string | null
           step_8_completed?: boolean
           step_8_completed_at?: string | null
+          step_9_completed?: boolean
+          step_9_completed_at?: string | null
           updated_at?: string
         }
         Relationships: []
