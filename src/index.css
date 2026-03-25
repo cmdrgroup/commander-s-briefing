@@ -1,96 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 4%;
+    --foreground: 240 6% 90%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 3% 12%;
+    --card-foreground: 240 6% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 3% 12%;
+    --popover-foreground: 240 6% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 43 49% 54%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 2% 18%;
+    --secondary-foreground: 240 6% 90%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 2% 18%;
+    --muted-foreground: 240 4% 56%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 240 2% 18%;
+    --accent-foreground: 240 6% 90%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 4 63% 46%;
+    --destructive-foreground: 240 6% 90%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 2% 22%;
+    --input: 240 2% 22%;
+    --ring: 43 49% 54%;
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;
 
-    --sidebar-background: 0 0% 98%;
+    --command-black: 0 0% 4%;
+    --tactical-steel: 240 3% 12%;
+    --gunmetal: 240 2% 18%;
+    --slate-grey: 240 4% 56%;
+    --warning-red: 4 63% 46%;
+    --command-gold: 43 49% 54%;
+    --steel-white: 240 6% 90%;
+    --field-green: 101 52% 20%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 240 3% 12%;
+    --sidebar-foreground: 240 6% 90%;
+    --sidebar-primary: 43 49% 54%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 240 2% 18%;
+    --sidebar-accent-foreground: 240 6% 90%;
+    --sidebar-border: 240 2% 22%;
+    --sidebar-ring: 43 49% 54%;
   }
 }
 
@@ -100,6 +62,102 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase tracking-widest;
+  }
+}
+
+@layer components {
+  .classified-strip {
+    @apply w-full py-2 px-4 text-center font-mono text-xs tracking-[0.2em] uppercase;
+    background: hsl(var(--tactical-steel));
+    color: hsl(var(--slate-grey));
+    border-bottom: 1px solid hsl(var(--gunmetal));
+  }
+
+  .section-header {
+    @apply font-heading text-2xl font-bold uppercase tracking-widest;
+    color: hsl(var(--steel-white));
+  }
+
+  .section-header::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: hsl(var(--warning-red));
+    margin-bottom: 1rem;
+  }
+
+  .directive-card {
+    @apply p-6 rounded-sm;
+    background: hsl(var(--tactical-steel));
+    border: 1px solid hsl(var(--gunmetal));
+  }
+
+  .directive-card-danger {
+    @apply directive-card;
+    border-left: 3px solid hsl(var(--warning-red));
+  }
+
+  .step-label {
+    @apply font-mono text-xs tracking-[0.15em] uppercase;
+    color: hsl(var(--slate-grey));
+  }
+
+  .gold-text {
+    color: hsl(var(--command-gold));
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-scale-check {
+    animation: scaleCheck 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleCheck {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes progressFill {
+    from { width: 0%; }
   }
 }
