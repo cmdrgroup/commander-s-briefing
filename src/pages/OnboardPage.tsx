@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getOperatorBySlug, updateOperatorStep, getCompletedSteps, getCurrentStep } from "@/lib/operators";
+import { supabase } from "@/integrations/supabase/client";
 import OnboardingFlow from "@/components/onboarding/OnboardingFlow";
 
 const OnboardPage = () => {
@@ -12,6 +14,17 @@ const OnboardPage = () => {
     queryFn: () => getOperatorBySlug(slug!),
     enabled: !!slug,
   });
+
+  // Update last_active_at on load
+  useEffect(() => {
+    if (operator) {
+      supabase
+        .from("operators")
+        .update({ last_active_at: new Date().toISOString() })
+        .eq("id", operator.id)
+        .then();
+    }
+  }, [operator?.id]);
 
   const stepMutation = useMutation({
     mutationFn: ({ step, signatureName }: { step: number; signatureName?: string }) =>
