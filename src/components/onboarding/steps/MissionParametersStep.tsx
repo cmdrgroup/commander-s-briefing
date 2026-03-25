@@ -12,7 +12,7 @@ const MissionParametersStep = ({ isCompleted, onAcknowledge, onContinue }: Props
   <StepLayout
     stepNumber={3}
     title='Mission Parameters — "This Is Not"'
-    acknowledgmentText='I understand what The Commander\'s Passage is NOT and accept these parameters.'
+    acknowledgmentText={"I understand what The Commander's Passage is NOT and accept these parameters."}
     isCompleted={isCompleted}
     onAcknowledge={onAcknowledge}
     onContinue={onContinue}
