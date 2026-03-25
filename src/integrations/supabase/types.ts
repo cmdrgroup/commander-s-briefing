@@ -14,7 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      operators: {
+        Row: {
+          created_at: string
+          email: string
+          enrolled_at: string
+          first_name: string
+          id: string
+          last_active_at: string | null
+          last_name: string
+          signature_name: string | null
+          slug: string
+          status: string
+          step_0_completed: boolean
+          step_0_completed_at: string | null
+          step_1_completed: boolean
+          step_1_completed_at: string | null
+          step_2_completed: boolean
+          step_2_completed_at: string | null
+          step_3_completed: boolean
+          step_3_completed_at: string | null
+          step_4_completed: boolean
+          step_4_completed_at: string | null
+          step_5_completed: boolean
+          step_5_completed_at: string | null
+          step_6_completed: boolean
+          step_6_completed_at: string | null
+          step_7_completed: boolean
+          step_7_completed_at: string | null
+          step_8_completed: boolean
+          step_8_completed_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          enrolled_at?: string
+          first_name: string
+          id?: string
+          last_active_at?: string | null
+          last_name: string
+          signature_name?: string | null
+          slug: string
+          status?: string
+          step_0_completed?: boolean
+          step_0_completed_at?: string | null
+          step_1_completed?: boolean
+          step_1_completed_at?: string | null
+          step_2_completed?: boolean
+          step_2_completed_at?: string | null
+          step_3_completed?: boolean
+          step_3_completed_at?: string | null
+          step_4_completed?: boolean
+          step_4_completed_at?: string | null
+          step_5_completed?: boolean
+          step_5_completed_at?: string | null
+          step_6_completed?: boolean
+          step_6_completed_at?: string | null
+          step_7_completed?: boolean
+          step_7_completed_at?: string | null
+          step_8_completed?: boolean
+          step_8_completed_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          enrolled_at?: string
+          first_name?: string
+          id?: string
+          last_active_at?: string | null
+          last_name?: string
+          signature_name?: string | null
+          slug?: string
+          status?: string
+          step_0_completed?: boolean
+          step_0_completed_at?: string | null
+          step_1_completed?: boolean
+          step_1_completed_at?: string | null
+          step_2_completed?: boolean
+          step_2_completed_at?: string | null
+          step_3_completed?: boolean
+          step_3_completed_at?: string | null
+          step_4_completed?: boolean
+          step_4_completed_at?: string | null
+          step_5_completed?: boolean
+          step_5_completed_at?: string | null
+          step_6_completed?: boolean
+          step_6_completed_at?: string | null
+          step_7_completed?: boolean
+          step_7_completed_at?: string | null
+          step_8_completed?: boolean
+          step_8_completed_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
