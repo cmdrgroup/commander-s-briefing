@@ -1,0 +1,1 @@
+UPDATE operators SET step_0_completed = true, step_1_completed = true, step_2_completed = true, step_3_completed = true, step_4_completed = true, step_5_completed = true WHERE slug = 'marcus-t-l4vi9a'
