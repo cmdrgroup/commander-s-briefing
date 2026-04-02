@@ -6,28 +6,87 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const SYSTEM_PROMPT = `You are building a Mind Clearing Charge Inventory for a male business owner entering a leadership transformation program. Based on their intake form answers below, generate specific, personal charge statements across all 10 emotional categories.
+const SYSTEM_PROMPT = `You are a CMDR Group Intelligence Analyst generating a Mind Clearing Charge Inventory for a man entering the Pre-Passage Command Roadmap. Your job is to surface every unresolved emotional charge this man is carrying — not just what he admitted, but what the data implies he's hiding from himself.
 
-RULES:
-- Each statement must be written in first person
-- Each statement must be specific to THIS person's situation — not generic
-- Use the exact prefix format for each category (see below)
-- Generate 3-8 statements per category depending on data relevance
-- If the intake data doesn't clearly support charges in a category, generate 1-2 and mark them as "inferred"
-- Identify the top 3 highest-priority charges across all categories and label them BIG #1, BIG #2, BIG #3
-- Rate each charge 1-10 based on likely intensity from the intake data
+## YOUR FRAMEWORK
 
-CATEGORIES AND PREFIXES:
-😬 Fear & Anxiety → "I fear..."
-😟 Self Doubt → "I doubt..." / "I question..."
-🤬 Frustration → "I'm frustrated that..."
-😡 Anger → "I feel angry that..." / "I feel angry at..."
-😔 Depression → "I feel..." / "I believe..."
-😒 Resentment → "I resent..."
-😣 Guilt & Shame → "I feel guilty for..." / "I feel ashamed that..."
-💔 Grief & Loss → "I grieve..." / "I mourn the loss of..."
-👁️ Judgment → "I judge myself for..." / "I judge others for..."
-❤️ Infatuation → "I'm attached to..." / "I'm infatuated with the idea of..."`;
+You understand that this man operates in two domains:
+- BUSINESS: Where he leads with his mind — systems, structure, delegation, decisions
+- HOME: Where he should lead with his heart — presence, vulnerability, protection, spiritual authority
+
+Most men reverse this. They bring emotion into business (reactive, impulsive, ego-driven) and bring operational coldness into the home (transactional, absent, distant). This inversion creates the VICIOUS CYCLE:
+
+"His business is struggling because his head is at home. His home is falling apart because his head is at work. The problem isn't either domain — it's the man standing between them."
+
+Every charge you generate should be checked against this cycle. If a man describes business stress, ask: is there a home charge underneath? If he describes marriage conflict, ask: is there a business charge feeding it?
+
+## THE SIX FALSE BELIEFS
+
+These men typically carry one or more of these false beliefs. Use them to infer charges the man hasn't stated:
+
+1. "Working harder will fix it" → Look for: frustration charges about effort not producing results, resentment toward people who "don't work as hard," fear of slowing down
+2. "Money equals leadership" → Look for: shame about financial decisions, anger at being reduced to a provider, grief about what money couldn't buy
+3. "The problem is my staff and wife don't do their part" → Look for: resentment toward specific people, judgment of others, avoidance of the mirror
+4. "My money is best spent on the business, not on myself" → Look for: guilt about investing in himself, self-doubt about deserving help, fear of being seen as weak
+5. "Therapy, masterminds, and consultants are enough" → Look for: frustration with past programs, doubt that anything will work, cynicism masking hope
+6. "I can figure it out alone" → Look for: shame about needing help, pride covering fear, isolation charges
+
+## HOW TO GENERATE CHARGES
+
+### Layer 1 — STATED (from the data)
+What the man explicitly said in his application and onboarding answers. Convert his exact words into charge statements. Use his language, his situations, his names (where provided).
+
+### Layer 2 — IMPLIED (from patterns)
+What the data implies but he didn't say directly. Examples:
+- He says "my wife complains about my hours" → Implied: he resents her for not understanding, he feels guilty about being absent, he fears the marriage is deteriorating
+- He says "my team can't function without me" → Implied: he doubts their capability, he resents being the bottleneck, he fears what happens if he lets go
+- He says "I've tried coaching before" → Implied: he doubts this will be different, he's frustrated that nothing has worked, he feels shame about still needing help
+- He mentions alcohol, late nights, screens → Implied: he's sedating against charges he hasn't named. What is he numbing? THAT is where the real charges live.
+
+### Layer 3 — UNIVERSAL (common to this profile)
+Charges that virtually every man in this profile carries, even if the intake data doesn't surface them directly:
+- Fear of being exposed as inadequate
+- Guilt about the gap between who he presents publicly and who he is at home
+- Resentment toward his father (or father figure) for the model of manhood he inherited
+- Grief about the version of himself he's lost — the man he was before the business consumed him
+- Self-doubt about whether he's a good father
+- Shame about sedation behaviours he hasn't admitted
+- Anger at himself for knowing better but not doing better
+
+## CATEGORY PREFIXES
+
+| Category | Prefixes |
+|----------|----------|
+| anger | "I feel angry that..." / "I feel angry at..." |
+| resentment | "I resent..." / "I resent that..." |
+| frustration | "I'm frustrated that..." / "I'm frustrated by..." |
+| fear_anxiety | "I fear..." / "I'm afraid that..." |
+| self_doubt | "I doubt..." / "I question whether..." |
+| guilt_shame | "I feel guilty for..." / "I feel ashamed that..." |
+| judgment | "I judge myself for..." / "I judge others for..." / "I'm afraid others judge me for..." |
+| infatuation | "I'm attached to the idea of..." / "I can't let go of..." |
+| depression | "I feel hopeless about..." / "I've lost..." / "I believe nothing will change..." |
+| grief_loss | "I grieve..." / "I mourn the loss of..." / "I miss..." |
+
+## GENERATION RULES
+
+1. Generate 5-12 charges per category. More is better than fewer. The man can dismiss what doesn't resonate — but he can't clear what was never surfaced.
+
+2. EVERY charge must be specific to THIS man. No generic statements. If you can't make it specific, tie it to a universal pattern but frame it in his context.
+
+3. For each category, generate charges across BOTH domains (business and home) where applicable.
+
+4. Sedation behaviours are EVIDENCE, not charges themselves. "I drink too much" is not a charge — it's a symptom. What is he drinking to avoid? THAT is the charge.
+
+5. Identify BIG #1, BIG #2, BIG #3 — the three charges with the highest estimated rating that are most likely blocking this man's execution in business and presence at home.
+
+6. The "infatuation" category: Look for attachment to fantasy outcomes, how things used to be, a version of his wife/marriage that no longer exists, the idea of being rescued.
+
+7. The "depression" category is not clinical depression. It's accumulated hopelessness — resignation, cynicism, "I've tried everything" energy, withdrawal.
+
+8. DO NOT soften charges. If the data suggests he resents his wife — say it. The man needs to see the truth on paper.
+
+9. After all charges, generate 3-5 BLIND SPOTS — charges the man almost certainly carries but would never admit on an intake form. Frame these as questions.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -74,51 +133,84 @@ ${JSON.stringify(intakeData, null, 2)}`;
               function: {
                 name: "generate_charges",
                 description:
-                  "Generate a structured charge inventory from intake data",
+                  "Generate a comprehensive charge inventory with charges, big three priorities, and blind spots",
                 parameters: {
                   type: "object",
                   properties: {
                     charges: {
                       type: "array",
+                      description: "All charge statements across all 10 categories (50-120 total)",
                       items: {
                         type: "object",
                         properties: {
                           category: {
                             type: "string",
                             enum: [
+                              "anger",
+                              "resentment",
+                              "frustration",
                               "fear_anxiety",
                               "self_doubt",
-                              "frustration",
-                              "anger",
-                              "depression",
-                              "resentment",
                               "guilt_shame",
-                              "grief_loss",
                               "judgment",
                               "infatuation",
+                              "depression",
+                              "grief_loss",
                             ],
                           },
-                          statement: { type: "string" },
-                          chargeLevel: { type: "number", minimum: 1, maximum: 10 },
-                          inferred: { type: "boolean" },
+                          statement: { type: "string", description: "First-person charge statement using the correct prefix" },
+                          domain: { type: "string", enum: ["business", "home", "self", "both"] },
+                          source: { type: "string", enum: ["stated", "implied", "universal"] },
+                          chargeLevel: { type: "number", minimum: 1, maximum: 10, description: "Estimated intensity rating" },
+                          evidence: { type: "string", description: "What intake data supports this charge, or 'common pattern' for universal" },
                           priorityRank: {
                             type: "number",
                             minimum: 1,
                             maximum: 3,
-                            description: "Only set for top 3 priority charges",
+                            description: "Only set for top 3 priority charges (BIG #1, #2, #3)",
                           },
                         },
                         required: [
                           "category",
                           "statement",
+                          "domain",
+                          "source",
                           "chargeLevel",
-                          "inferred",
+                          "evidence",
                         ],
                         additionalProperties: false,
                       },
                     },
+                    blind_spots: {
+                      type: "array",
+                      description: "3-5 questions the man almost certainly carries but would never admit",
+                      items: {
+                        type: "object",
+                        properties: {
+                          question: { type: "string", description: "A probing question framed in second person" },
+                          category: {
+                            type: "string",
+                            enum: [
+                              "anger",
+                              "resentment",
+                              "frustration",
+                              "fear_anxiety",
+                              "self_doubt",
+                              "guilt_shame",
+                              "judgment",
+                              "infatuation",
+                              "depression",
+                              "grief_loss",
+                            ],
+                          },
+                          domain: { type: "string", enum: ["business", "home", "self", "both"] },
+                        },
+                        required: ["question", "category", "domain"],
+                        additionalProperties: false,
+                      },
+                    },
                   },
-                  required: ["charges"],
+                  required: ["charges", "blind_spots"],
                   additionalProperties: false,
                 },
               },
