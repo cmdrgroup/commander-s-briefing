@@ -9,7 +9,9 @@
  *   Commander's 75 app     → referenced, tracked externally
  */
 
-import type { RoadmapPhase } from "@/lib/roadmap";
+import type { Database } from "@/integrations/supabase/types";
+
+type RoadmapPhase = Database["public"]["Enums"]["roadmap_phase"];
 
 export interface RoadmapTemplateItem {
   phase: RoadmapPhase;
