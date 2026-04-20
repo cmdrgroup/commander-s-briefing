@@ -68,9 +68,16 @@ const MindClearingStep = ({ operatorId, isCompleted, onAcknowledge, onContinue }
     addChargeMutation.mutate({ category: item.category, statement, rating });
   }, [addChargeMutation]);
 
-  const handleBlindSpotDismiss = useCallback((_id: string) => {
-    // Keep in data but mark as dismissed — no-op for now
-  }, []);
+  const dismissMutation = useMutation({
+    mutationFn: async (id: string) => {
+      await updateChargeItem(id, { source: "blind_spot_dismissed" });
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["charge_items_operator", operatorId] }),
+  });
+
+  const handleBlindSpotDismiss = useCallback((id: string) => {
+    dismissMutation.mutate(id);
+  }, [dismissMutation]);
 
   const hasItems = items.filter(i => i.source !== "blind_spot").length > 0;
 
