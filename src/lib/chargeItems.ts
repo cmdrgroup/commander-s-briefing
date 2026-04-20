@@ -97,6 +97,7 @@ export async function updateChargeItem(id: string, updates: Partial<{
   is_cleared: boolean;
   cleared_at: string | null;
   review_rating: number | null;
+  source: string | null;
 }>): Promise<void> {
   const { error } = await supabase.from("charge_items").update(updates as any).eq("id", id);
   if (error) throw error;
