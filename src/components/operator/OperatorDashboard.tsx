@@ -144,7 +144,8 @@ const OperatorDashboard = ({ operator }: OperatorDashboardProps) => {
                       >
                         <button
                           onClick={e => { e.stopPropagation(); handleStatusCycle(item); }}
-                          className="mt-0.5 text-sm flex-shrink-0"
+                          disabled={item.status === "cleared"}
+                          className={`mt-0.5 text-sm flex-shrink-0 ${item.status === "cleared" ? "cursor-default" : "cursor-pointer"}`}
                         >
                           {item.status === "cleared" ? "✅" : item.status === "in_progress" ? "🟡" : "⬜"}
                         </button>
