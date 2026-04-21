@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import OnboardPage from "./pages/OnboardPage.tsx";
 import CommandDashboard from "./pages/CommandDashboard.tsx";
 import CommandLogin from "./pages/CommandLogin.tsx";
+import OperatorLogin from "./pages/OperatorLogin.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/login" element={<OperatorLogin />} />
           <Route path="/onboard/:slug" element={<OnboardPage />} />
           <Route path="/command/login" element={<CommandLogin />} />
           <Route path="/command" element={<ProtectedRoute><CommandDashboard /></ProtectedRoute>} />
